@@ -14,7 +14,9 @@
   <script type="text/javascript">
     window.fetch('https://the-dune-api.herokuapp.com/quotes/1').then(function (response) {
       response.json().then(function () {
-        console.log(response.headers.get('content-length'));
+        const contentLength = response.headers.get('content-length');
+        const res = contentLength === null ? 'Cannot read content-length': 'content-length is ' + contentLength;
+        document.getElementById('root').innerHTML = res;
       });
     });
   </script>

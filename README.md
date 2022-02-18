@@ -6,6 +6,4 @@ Run
 ```js
 npx http-server
 ```
-Connect to the browser of your choice with the developer tools console to `127.0.0.1:8181`.
-
-If `null` is displayed it means that the browser does not consider `content-length` a CORS-safelisted response header.
+Connect to the browser of your choice to `127.0.0.1:8081`.
