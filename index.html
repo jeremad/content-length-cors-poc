@@ -9,18 +9,28 @@
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.7.2/bluebird.min.js"></script>
-  <script type="text/javascript">
-    window.fetch('https://the-dune-api.herokuapp.com/quotes/1').then(function (response) {
-      response.json().then(function () {
-        const contentLength = response.headers.get('content-length');
-        const res = contentLength === null ? 'Cannot read content-length': 'content-length is ' + contentLength;
-        document.getElementById('root').innerHTML = res;
-      });
-    });
-  </script>
   <div id="root"></div>
+  <script type="text/javascript">
+  const nb = 1000 * 1000 * 1000;
+  function loopVar() {
+    for (var i = 0; i < nb; i++) { }
+  }
+
+  function loopLet() {
+    for (let j = 0; j < nb; j++) { }
+  }
+
+  const t0 = performance.now();
+  loopVar();
+  const t1 = performance.now();
+  loopLet();
+  const t2 = performance.now();
+  const resVar = Math.floor(t1 - t0);
+  const resLet = Math.floor(t2 - t1);;
+
+  res = `Looping ${nb} times with 'var' took ${resVar}ms.<br>Looping ${nb} times with 'let' took ${resLet}ms.`
+  document.getElementById('root').innerHTML = res;
+  </script>
 </body>
 
 </html>
